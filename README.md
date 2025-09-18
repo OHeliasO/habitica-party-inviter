@@ -7,6 +7,13 @@ This project automates inviting users to a Habitica party using the Habitica API
 - Reads user data from a JSON file
 - Uses environment variables for secure API authentication
 
+### Invitation Limits
+
+⚠️ **Important:** Habitica only allows **10 pending invites per party** at a time.  
+This means our bot **cannot invite all users at once**—once the limit is reached, additional invites will be skipped until some pending invitations are accepted or expire.  
+
+To avoid sending too many invites, the bot **only invites users who meet a minimum level requirement** (default: level equals or above 5). Users below this level will be automatically skipped.
+
 ## Requirements
 - Python 3.11+
 - Habitica account and API credentials

@@ -43,12 +43,19 @@ def main_loop():
 
             if users:
                 print(f"👀 Found {len(users)} users looking for a party.")
-                print("Users:",users)
+                # print("Users:",users)
 
             for u in users:
                 uid = u.get("_id")
                 if not uid:
                     continue
+                # We can only have 10 invites in waiting so we can't invite all users
+                # **Check level before inviting**
+                user_level = u.get("stats", {}).get("lvl", 0)
+                if user_level < 5:
+                    print(f"⏩ Skipping {uid}, level {user_level} is too low.")
+                    continue
+
                 if uid in invited:
                     print(f"⏩ Skipping {uid}, already invited before.")
                     continue
